@@ -1,7 +1,5 @@
-app.controller('MainController', function ($scope, FlashCardsFactory, whateverName) {
-	//$scope.flashCards = whateverName;
-
-	//$scope.flashCards = FlashCardsFactory.getFlashCards();
+app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
+	
 	$scope.currentCategory = null;
 
 	$scope.getCategoryCards = function (category) {
@@ -29,6 +27,11 @@ app.controller('MainController', function ($scope, FlashCardsFactory, whateverNa
 		if (!flashCard.answered) {
 			flashCard.answered = true;
 			flashCard.answeredCorrectly = answer.correct;
+			if(answer.correct) {
+				ScoreFactory.correct = ScoreFactory.correct + 1;
+			} else {
+				ScoreFactory.incorrect = ScoreFactory.incorrect + 1;
+			}
 		}
 	}
 });
