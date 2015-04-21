@@ -8,15 +8,7 @@
     </head>
     <body ng-app="flashCards">
 
-        <div ng-controller="StatsController" id="statistics">
-
-            <div id="scoreboard">
-                <h3>Correct: <span>{{ scores.correct }}</span></h3>
-                <h3>Incorrect: <span>{{ scores.incorrect }}</span></h3>
-            </div>
-
-        </div>
-
+        <div ng-include="'templates/stats.html'"></div>
 
         <div ng-controller="MainController">
 
@@ -38,7 +30,7 @@
                 <h3>{{ flashCard.category }} </h3>
         	    <ul class="flash-card-answers">
         	    	<li
-        	    		ng-repeat="answer in flashCard.answers"
+        	    		ng-repeat="answer in flashCard.answers | cheat"
         	    		class="flash-card-answer"
         	    		ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}</li>
         	    </ul>
@@ -58,6 +50,8 @@
         <script src="js/controllers/stats.controller.js"></script>
         <script src="js/factories/flashCards.factory.js"></script>
         <script src="js/factories/score.factory.js"></script>
+        <script src="js/filters/cheat-filter.js"></script>
+
 
     </body>
 </html>
