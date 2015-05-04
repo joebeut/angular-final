@@ -10,22 +10,29 @@
 
         <div ng-include="'templates/stats.html'"></div>
 
+        
         <div ng-controller="MainController">
+            
 
             <button class="category-button" 
                     ng-repeat="category in categories" 
                     ng-click="getCategoryCards(category)"
-                    ng-class="{ active: currentCategory === category }">
+                    ng-class="{ active: currentCategory === category }"
+                    ng-hide="loading">
                 {{ category }}
             </button>
             <button class="category-button" 
-                    ng-click="getCategoryCards()">
+                    ng-click="getCategoryCards()"
+                    ng-hide="loading">
                 Reset
             </button>
 
+            <loader ng-show="loading"></loader>
+
         	<div
         		ng-repeat="flashCard in flashCards | orderBy : 'question'"
-        		class="flash-card">
+        		class="flash-card"
+                ng-hide="loading">
         	    <h1>{{ flashCard.question | uppercase }}</h1>
                 <h3>{{ flashCard.category }} </h3>
         	    <ul class="flash-card-answers">
@@ -51,6 +58,7 @@
         <script src="js/factories/flashCards.factory.js"></script>
         <script src="js/factories/score.factory.js"></script>
         <script src="js/filters/cheat-filter.js"></script>
+        <script src="js/directives/loader/loader.js"></script>
 
 
     </body>

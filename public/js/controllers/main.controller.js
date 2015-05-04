@@ -1,16 +1,22 @@
 app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
 	
 	$scope.currentCategory = null;
+	$scope.loading = true;
 
 	$scope.getCategoryCards = function (category) {
+		$scope.loading = true;
 		$scope.currentCategory = category;
 		$scope.getAllCards();
 	}
 
 	$scope.getAllCards = function () {
-        FlashCardsFactory.getFlashCards($scope.currentCategory).then(function (cards) {
+        FlashCardsFactory.getFlashCards($scope.currentCategory)
+        	.then(function (cards) {
             $scope.flashCards = cards;
-        });
+        	})
+        	.finally(function () {
+        		$scope.loading = false;
+        	});
     };
 
     $scope.getAllCards();
