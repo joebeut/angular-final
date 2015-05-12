@@ -1,43 +1,10 @@
-app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
+app.controller('MainController', function ($scope, HomeworkListFactory) {
 	
 	$scope.currentCategory = null;
 	$scope.loading = true;
+	$scope.myname = 'Joe Beutler';
 
-	$scope.getCategoryCards = function (category) {
-		$scope.loading = true;
-		$scope.currentCategory = category;
-		$scope.getAllCards();
-	}
+	$scope.homeworkList = HomeworkListFactory.getHomework();
 
-	$scope.getAllCards = function () {
-        FlashCardsFactory.getFlashCards($scope.currentCategory)
-        	.then(function (cards) {
-            $scope.flashCards = cards;
-        	})
-        	.finally(function () {
-        		$scope.loading = false;
-        	});
-    };
 
-    $scope.getAllCards();
-
-    $scope.categories = [
-	    'MongoDB',
-	    'Express',
-	    'Angular',
-	    'Node'
-	];
-
-	$scope.answerQuestion = function (answer, flashCard) {
-
-		if (!flashCard.answered) {
-			flashCard.answered = true;
-			flashCard.answeredCorrectly = answer.correct;
-			if(answer.correct) {
-				ScoreFactory.correct = ScoreFactory.correct + 1;
-			} else {
-				ScoreFactory.incorrect = ScoreFactory.incorrect + 1;
-			}
-		}
-	}
 });
