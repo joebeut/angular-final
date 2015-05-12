@@ -1,8 +1,7 @@
 app.controller('MainController', function ($scope, HomeworkListFactory) {
 	
-	$scope.currentCategory = null;
-	$scope.loading = true;
 	$scope.myname = 'Joe Beutler';
+	$scope.showInfo = false;
 
 	$scope.homeworkList = HomeworkListFactory.getHomework();
 

@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Flash Cards</title>
-        <!-- We've provided some styles for you, aren't we nice? -->
-        <link rel="stylesheet" type="text/css" href="css/reset.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-    </head>
-    <body ng-app="homeworkList">
+<head>
+  <title>Flash Cards</title>
+  <!-- We've provided some styles for you, aren't we nice? -->
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body ng-app="homeworkList">
 
-        <div ng-controller="MainController">
-            <div class="homework-list"
-                ng-repeat="homework in homeworkList"
-            >
+  <div class="app-title">Homework Submissions for Joe Beutler</div>
 
-              <h1>{{ homework.assignment | uppercase }}</h1>
-              <h3>{{ homework.url }} </h3>
-              <h3>{{ homework.status }} </h3>
+  <div ng-controller="MainController">
+    <div class="homework-list"
+      ng-repeat="homework in homeworkList"
+    >
 
-            </div>
+      <h1><a href ng-click="showInfo = !showInfo">{{ homework.assignment | uppercase }}</a></h1>
 
-        </div>
+      <div ng-show="showInfo">
+        <h3>Url: <a href="{{ homework.url }}">{{ homework.url }}</a> </h3>
+        <h3>Status: {{ homework.status }}</h3>
+      </div>
 
-    	<script src="js/lib/angular.js"></script>
-    	<script src="js/app.js"></script>
-    	<script src="js/controllers/main.controller.js"></script>
-        <script src="js/factories/homework.factory.js"></script>
-        <script src="js/directives/homework-list/homework-list.js"></script>
+    </div>
+
+  </div>
+
+  <script src="js/lib/angular.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/main.controller.js"></script>
+  <script src="js/factories/homework.factory.js"></script>
+  <script src="js/directives/homework-list/homework-list.js"></script>
 
 
-    </body>
+</body>
 </html>

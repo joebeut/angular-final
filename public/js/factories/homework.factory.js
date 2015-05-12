@@ -24,6 +24,11 @@ app.factory('HomeworkListFactory', function ($http) {
                 assignment: 'Angular Day 3',
                 url: 'https://github.com/joebeut/flash-card-2',
                 status: 'completed'
+            },
+            {
+                assignment: 'Angular Assessment',
+                url: 'https://github.com/joebeut/angular-final',
+                status: 'completed'
             }];
 
             return data;
