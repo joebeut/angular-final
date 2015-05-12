@@ -32,18 +32,10 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.get('/cards', function (req, res) {
+app.get('/about', function (req, res) {
 
-    var modelParams = {};
+    var aboutPath = path.join(__dirname, '../about.html');
 
-    if (req.query.category) {
-    	modelParams.category = req.query.category;
-    }
-
-    FlashCardModel.find(modelParams, function (err, cards) {
-        setTimeout(function () {
-            res.send(cards);
-        }, Math.random() * 1000);
-    });
+    res.sendFile(aboutPath);
 
 });

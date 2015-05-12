@@ -33,6 +33,11 @@ a {
   font-family: "Bitter", sans-serif;
 }
 
+.about-content {
+  margin-left: 5em;
+  margin-top: 2em;
+}
+
 
 .homework-list {
   padding-top: 1em;
